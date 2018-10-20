@@ -1,4 +1,6 @@
+
 <template>
+
   <div>
     <form novalidate class="md-layout md-alignment-center" @submit.prevent="validateUser">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
@@ -9,15 +11,20 @@
         <md-card-content>
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('firstName')">
+              <md-field :class="getValidationClass('description')">
                 <label for="description">Description</label>
                 <md-input name="description" id="description"  v-model="form.description" :disabled="sending" />
               </md-field>
             </div>
           </div>
+
+          <div id="mapid" style="height: 180px;"></div>
+
+
+
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('firstName')">
+              <md-field :class="getValidationClass('latitude')">
                 <label for="latitude">Latitude</label>
                 <md-input name="latitude" id="latitude"  v-model="form.latitude" :disabled="sending" />
               </md-field>
@@ -25,7 +32,7 @@
           </div>
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('firstName')">
+              <md-field :class="getValidationClass('longitude')">
                 <label for="longitude">Longitude</label>
                 <md-input name="longitude" id="longitude" autocomplete="longitude" v-model="form.longitude" :disabled="sending" />
               </md-field>
@@ -36,7 +43,7 @@
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
         <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="sending">Create Rehab Center</md-button>
+          <md-button type="submit" @click="submit()" class="md-primary" :disabled="sending">Create Rehab Center</md-button>
         </md-card-actions>
       </md-card>
 
@@ -64,6 +71,8 @@
         gender: null,
         age: null,
         email: null,
+        latitude:null,
+        longitude:null
       },
       userSaved: false,
       sending: false,
@@ -71,17 +80,17 @@
     }),
     validations: {
       form: {
-        firstName: {
+        latitude: {
           required,
           minLength: minLength(3)
         },
-        lastName: {
+        longitude: {
           required,
           minLength: minLength(3)
         },
-        age: {
+        description: {
           required,
-          maxLength: maxLength(3)
+          maxLength: minLength(3)
         },
         gender: {
           required
@@ -128,6 +137,23 @@
           this.saveUser()
         }
       }
+    },
+    mounted(){
+      var self = this;
+      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+              attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox.streets',
+              accessToken: 'pk.eyJ1IjoidXNlcjk3NDciLCJhIjoiY2puaTA5N2oxMDMxZjNybXc4bXEzbnVuciJ9.l1acHqpPtnnOGvIF9_7EnA'
+              }).addTo(mymap);
+
+            function onMapClick(e) {
+                 self.form.latitude=e.latlng.lat;
+                 self.form.longitude=e.latlng.lng;
+              }
+
+              mymap.on('click', onMapClick);
     }
   }
 </script>
@@ -139,4 +165,5 @@
     right: 0;
     left: 0;
   }
+   
 </style>
