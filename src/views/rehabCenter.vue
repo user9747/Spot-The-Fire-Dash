@@ -106,6 +106,9 @@
       }
     },
     methods: {
+      submit(){
+        console.log(this.form);
+      },
       getValidationClass (fieldName) {
         const field = this.$v.form[fieldName]
 
