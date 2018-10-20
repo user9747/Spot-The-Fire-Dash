@@ -12,6 +12,11 @@
       <h3>{{ fires.long }}</h3>
       <h3>{{ fires.description }}</h3>
       <h3>{{ fires.openDate }}</h3>
+       <video width="640" height="240" controls>
+  <source :src="fires.imgPath" type="video/mp4">
+  <source :src="fires.imgPath" type="video/ogg">
+Your browser does not support the video tag.
+</video> 
       </md-card-content>
         <md-button @click="changeType(key)">Back</md-button>
       
