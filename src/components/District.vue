@@ -1,3 +1,4 @@
+
 <template>
   <div class="hello">
     <ol>
@@ -11,9 +12,9 @@
 
 <script>
   import firebase from 'firebase'
-  var keys=[],values=[],fires,refUrl;
+  var keys=[],values=[],fires,refUrl,newURl;
   export default {
-  name: 'Country',
+  name: 'District',
   props: {
     msg: String
   },  
@@ -25,16 +26,17 @@
     }
   },
   methods:{
-    changeType:function(country){
-      this.$store.commit('updateUrl','fire_loc/'+country);
+  	changeType:function(district){
+      this.$store.commit('updateUrl',this.$store.state.url+"/"+district);
       console.log(this.$store.state.url);
-      this.$store.commit('changeType','State');
+      this.$store.commit('changeType','FireList');
       console.log(this.$store.state.type);
     }
   },
   mounted(){
-    this.$store.commit('updateUrl','fire_loc')
+    console.log(this.$store.state.type);
     refUrl=this.$store.state.url;
+    console.log(refUrl);
     var fireRef = firebase.database().ref(refUrl);
     fireRef.on('value',function(snap){
       fires=snap.val();

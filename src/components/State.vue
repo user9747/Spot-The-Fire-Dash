@@ -2,8 +2,8 @@
   <div class="hello">
     <ol>
     <li v-for="key in keys">
-      {{ key }}
-      <button @click="states(key)" >hello</button>
+      
+      <button @click="changeType(key)" >{{ key }}</button>
     </li>
   </ol>
   </div>
@@ -11,22 +11,32 @@
 
 <script>
   import firebase from 'firebase'
-  var keys=[],values=[],fires,state;
-export default {
-  name: 'Country',
+  var keys=[],values=[],fires,refUrl,newURl;
+  export default {
+  name: 'State',
   props: {
     msg: String
   },  
   data:function(){
     return{
       keys,
-      values,fires,state
+      values,
+      fires
     }
   },
   methods:{
+    changeType:function(state){
+      this.$store.commit('updateUrl',this.$store.state.url+"/"+state);
+      console.log(this.$store.state.url);
+      this.$store.commit('changeType','District');
+      console.log(this.$store.state.type);
+    }
   },
   mounted(){
-    var fireRef = firebase.database().ref("fire_loc");
+    console.log(this.$store.state.type);
+    refUrl=this.$store.state.url;
+    console.log(refUrl);
+    var fireRef = firebase.database().ref(refUrl);
     fireRef.on('value',function(snap){
       fires=snap.val();
       for(var i in fires){

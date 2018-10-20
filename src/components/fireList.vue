@@ -11,9 +11,9 @@
 
 <script>
   import firebase from 'firebase'
-  var keys=[],values=[],fires,refUrl;
+  var keys=[],values=[],fires,refUrl,newURl;
   export default {
-  name: 'Country',
+  name: 'FireList',
   props: {
     msg: String
   },  
@@ -25,16 +25,17 @@
     }
   },
   methods:{
-    changeType:function(country){
-      this.$store.commit('updateUrl','fire_loc/'+country);
+    changeType:function(fireList){
+      this.$store.commit('updateUrl',this.$store.state.url+"/"+fireList);
       console.log(this.$store.state.url);
-      this.$store.commit('changeType','State');
+      this.$store.commit('changeType','Fire');
       console.log(this.$store.state.type);
     }
   },
   mounted(){
-    this.$store.commit('updateUrl','fire_loc')
+    console.log(this.$store.state.type);
     refUrl=this.$store.state.url;
+    console.log(refUrl);
     var fireRef = firebase.database().ref(refUrl);
     fireRef.on('value',function(snap){
       fires=snap.val();

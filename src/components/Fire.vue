@@ -1,9 +1,12 @@
 <template>
   <div class="hello">
     <ol>
-    <li v-for="key in keys">
+    <li>
       
-      <button @click="changeType(key)" >{{ key }}</button>
+      <h3  >{{ fires.lat }}</h3>
+      <h3  >{{ fires.long }}</h3>
+      <h3  >{{ fires.discription }}</h3>
+      <h3  >{{ fires.openDate }}</h3>
     </li>
   </ol>
   </div>
@@ -11,9 +14,9 @@
 
 <script>
   import firebase from 'firebase'
-  var keys=[],values=[],fires,refUrl;
+  var keys=[],values=[],fires,fireVal,refUrl,newURl;
   export default {
-  name: 'Country',
+  name: 'Fire',
   props: {
     msg: String
   },  
@@ -21,26 +24,23 @@
     return{
       keys,
       values,
-      fires
+      fires,
     }
   },
   methods:{
-    changeType:function(country){
-      this.$store.commit('updateUrl','fire_loc/'+country);
+    changeType:function(fireList){
       console.log(this.$store.state.url);
-      this.$store.commit('changeType','State');
       console.log(this.$store.state.type);
     }
   },
   mounted(){
-    this.$store.commit('updateUrl','fire_loc')
+    var self=this;
+    console.log(this.$store.state.type);
     refUrl=this.$store.state.url;
+    console.log(refUrl);
     var fireRef = firebase.database().ref(refUrl);
     fireRef.on('value',function(snap){
-      fires=snap.val();
-      for(var i in fires){
-        keys.push(i);
-      }
+      self.fires=snap.val();
     });
   }
 }
