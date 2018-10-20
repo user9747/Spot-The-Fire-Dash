@@ -63,7 +63,7 @@
     minLength,
     maxLength
   } from 'vuelidate/lib/validators'
-  
+  import axios from 'axios'
 
   export default {
     name: 'FormValidation',
@@ -108,6 +108,12 @@
     methods: {
       submit(){
         console.log(this.form);
+        axios.post({
+          url:url,data:postData}).then((res)=>{
+
+          }).catch((err)=>{
+            
+          })
       },
       getValidationClass (fieldName) {
         const field = this.$v.form[fieldName]
