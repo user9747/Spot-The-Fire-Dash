@@ -3,7 +3,7 @@
     <ol>
     <li v-for="key in keys">
       
-        <a @click="changeType(key)">
+        <p @click="changeType(key)">
       <md-card>
       <md-card-header>
         <div class="md-title"> {{key}}       </div>
@@ -11,11 +11,11 @@
 
       
     </md-card>
-      </a>
+      </p>
     </li>
   </ol>
    <md-speed-dial md-event="click" md-direction="bottom">
-      <md-speed-dial-target class="md-primary">
+      <md-speed-dial-target class="md-primary" @click="goBack">
         <p style="color:white;font-size:30px;">&#8592;</p>
       </md-speed-dial-target>
 
@@ -44,6 +44,13 @@
       console.log(this.$store.state.url);
       this.$store.commit('changeType','District');
       console.log(this.$store.state.type);
+    },
+    goBack:function(){
+      const urlPrev = this.$store.state.url
+      var url = urlPrev.substring(0, urlPrev.lastIndexOf("/"));
+      // console.log(url)
+      this.$store.commit('updateUrl',url)
+      this.$store.commit('changeType','Country')
     }
   },
   mounted(){

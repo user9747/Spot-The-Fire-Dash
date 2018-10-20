@@ -4,25 +4,18 @@
     <li v-for="key in keys">
       
       <!-- <button  > -->
-         <a  @click="changeType(key)">
+         <p @click="changeType(key)">
       <md-card class="md-layout-item md-medium-size-100">
       <md-card-header>
         <div class="md-title"> {{key}}       </div>
       </md-card-header>
-        <md-button @click="changeType(key)">Action</md-button>
       
     </md-card>
 
-      </a>
+      </p>
       <!-- </button> -->
     </li>
   </ol>
-    <md-speed-dial md-event="click" md-direction="bottom">
-      <md-speed-dial-target class="md-primary">
-        <p style="color:white;font-size:30px;">&#8592;</p>
-      </md-speed-dial-target>
-
-    </md-speed-dial>
   </div>
 </template>
 

@@ -10,7 +10,7 @@
 
       </md-card-header>
       <md-card-content>
-      <p style="text-align:left;margin-left:4vw;">Requestee Phone:&nbsp &nbsp{{mobileNo}}</p>
+      <p style="text-align:left;margin-left:4vw;">Requestee Phone:&nbsp; &nbsp;{{mobileNo}}</p>
       <p style="text-align:left;margin-left:4vw;">{{ fires.description }}</p>
       <div class="container">
        <video width="140px" controls>
@@ -23,7 +23,6 @@ Your browser does not support the video tag.
 
 
       </md-card-content>
-        <md-button @click="changeType(key)">Back</md-button>
       
     </md-card>
       </div> 
@@ -31,7 +30,7 @@ Your browser does not support the video tag.
     </li>
   </ol>
    <md-speed-dial md-event="click" md-direction="bottom">
-      <md-speed-dial-target class="md-primary">
+      <md-speed-dial-target class="md-primary" @click="changeType()">
         <p style="color:white;font-size:30px;">&#8592;</p>
       </md-speed-dial-target>
 
@@ -58,8 +57,7 @@ Your browser does not support the video tag.
   methods:{
     changeType:function(fireList){
       const urlPrev = this.$store.state.url
-      var url = urlPrev.substring(0, urlPrev.lastIndexOf("/") + 1);
-      // console.log(url)
+      var url = urlPrev.substring(0, urlPrev.lastIndexOf("/"));
       this.$store.commit('updateUrl',url)
       this.$store.commit('changeType','FireList')
     }
@@ -74,7 +72,7 @@ Your browser does not support the video tag.
     fireRef.on('value',function(snap){
       self.fires=snap.val();
     });
-    self.mobileNo = url.substring(url.lastIndexOf('/')+1,url.length)
+    self.mobileNo = url.substring(url.lastIndexOf('/'),url.length)
   }
 }
 </script>
