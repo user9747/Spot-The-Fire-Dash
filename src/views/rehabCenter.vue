@@ -2,6 +2,7 @@
 <template>
 
   <div>
+    
     <form novalidate class="md-layout md-alignment-center" @submit.prevent="validateUser">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
@@ -38,6 +39,8 @@
               </md-field>
             </div>
           </div>
+          <div id="map"></div>
+
         </md-card-content>
 
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
@@ -60,6 +63,7 @@
     minLength,
     maxLength
   } from 'vuelidate/lib/validators'
+  
 
   export default {
     name: 'FormValidation',

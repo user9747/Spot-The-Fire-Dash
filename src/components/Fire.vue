@@ -3,20 +3,24 @@
     <ol>
     <li>
        <div>
-      <md-card>
+      <md-card >
       <md-card-header>
-        <div class="md-title"> {{fires.state}}       </div>
+        <div class="md-title" style="text-align:left;margin-left:1vw;"> {{fires.district}}  Fire    </div>
+        <div class="md-subtitle" style="text-align:left;margin-left:2vw;margin-top:1vh"> {{fires.state}},{{fires.country}}    </div>
+
       </md-card-header>
       <md-card-content>
-         <h3>{{ fires.lat }}</h3>
-      <h3>{{ fires.long }}</h3>
+         <h3>{{ fires.lat }},{{ fires.long }}</h3>
       <h3>{{ fires.description }}</h3>
       <h3>{{ fires.openDate }}</h3>
-       <video width="640" height="240" controls>
-  <source :src="fires.imgPath" type="video/mp4">
-  <source :src="fires.imgPath" type="video/ogg">
+      <div class="container">
+       <video width="140px" controls>
+       <source :src="fires.imgPath" type="video/mp4">
+       <source :src="fires.imgPath" type="video/ogg">
 Your browser does not support the video tag.
 </video> 
+  </div>
+
       </md-card-content>
         <md-button @click="changeType(key)">Back</md-button>
       
@@ -81,4 +85,8 @@ li {
 a {
   color: #42b983;
 }
+.container{
+background-color: black;
+}
+
 </style>
