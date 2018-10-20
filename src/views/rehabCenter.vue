@@ -107,12 +107,23 @@
     },
     methods: {
       submit(){
-        console.log(this.form);
-        axios.post({
-          url:url,data:postData}).then((res)=>{
-
+        // console.log(this.form);
+        var self=this;
+        axios({
+          method:'post',
+          url:'http://localhost:3030/apis/rehab',
+          data:{
+            description:this.form.description,
+            lat:this.form.latitude,
+            long:this.form.longitude,
+            path:"dummy/Path",
+            stockData:"No stock data available"
+          }
+        }).then(function(res){
+            console.log(res);
+            self.$router.push('/');
           }).catch((err)=>{
-            
+            console.log(err);
           })
       },
       getValidationClass (fieldName) {
