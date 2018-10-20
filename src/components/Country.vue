@@ -4,16 +4,16 @@
     <li v-for="key in keys">
       
       <!-- <button  > -->
-         <div>
+         <a  @click="changeType(key)">
       <md-card>
       <md-card-header>
         <div class="md-title"> {{key}}       </div>
       </md-card-header>
-
         <md-button @click="changeType(key)">Action</md-button>
       
     </md-card>
-      </div>
+
+      </a>
       <!-- </button> -->
     </li>
   </ol>
@@ -71,7 +71,8 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-a {
+li a{
   color: #42b983;
+  text-decoration: none;
 }
 </style>

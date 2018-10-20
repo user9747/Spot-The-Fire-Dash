@@ -3,16 +3,15 @@
     <ol>
     <li v-for="key in keys">
       
-        <div>
+        <a @click="changeType(key)">
       <md-card>
       <md-card-header>
         <div class="md-title"> {{key}}       </div>
       </md-card-header>
 
-        <md-button @click="changeType(key)">Action</md-button>
       
     </md-card>
-      </div>
+      </a>
     </li>
   </ol>
   </div>
