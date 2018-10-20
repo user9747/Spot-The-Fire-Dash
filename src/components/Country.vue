@@ -1,11 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="md-layout md-gutter md-alignment-center">
     <ol>
     <li v-for="key in keys">
       
       <!-- <button  > -->
          <a  @click="changeType(key)">
-      <md-card>
+      <md-card class="md-layout-item md-medium-size-100">
       <md-card-header>
         <div class="md-title"> {{key}}       </div>
       </md-card-header>
