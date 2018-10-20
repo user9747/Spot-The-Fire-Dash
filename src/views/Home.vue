@@ -29,12 +29,6 @@
 
       </md-list>
     </md-drawer>
-
-
-          
-          
-
-
     </div>
   <div class="home">
     
@@ -44,6 +38,7 @@
     <div v-if="this.currenType === 'FireList'"><FireList/></div>
     <div v-if="this.currenType === 'Fire'"><Fire/></div>
   </div>
+
 </div>
 </template>
 

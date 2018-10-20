@@ -6,13 +6,12 @@
       <md-card >
       <md-card-header>
         <div class="md-title" style="text-align:left;margin-left:1vw;"> {{fires.district}}  Fire    </div>
-        <div class="md-subtitle" style="text-align:left;margin-left:2vw;margin-top:1vh"> {{fires.state}},{{fires.country}}    </div>
+        <p class="md-subtitle" style="text-align:left;margin-left:2vw;margin-top:1vh"> {{fires.state}},{{fires.country}}<span style="margin-left:15vw;"> <a>&#127760;</a> <a style="text-decoration:underline;font-size:15px;"> {{ fires.lat }},{{ fires.long }}</a></span></p>
 
       </md-card-header>
       <md-card-content>
-         <h3>{{ fires.lat }},{{ fires.long }}</h3>
-      <h3>{{ fires.description }}</h3>
-      <h3>{{ fires.openDate }}</h3>
+      <p style="text-align:left;margin-left:4vw;">Requestee Phone:&nbsp &nbsp{{mobileNo}}</p>
+      <p style="text-align:left;margin-left:4vw;">{{ fires.description }}</p>
       <div class="container">
        <video width="140px" controls>
        <source :src="fires.imgPath" type="video/mp4">
@@ -20,6 +19,8 @@
 Your browser does not support the video tag.
 </video> 
   </div>
+      <p>{{ fires.openDate }}</p>
+
 
       </md-card-content>
         <md-button @click="changeType(key)">Back</md-button>
@@ -29,12 +30,18 @@ Your browser does not support the video tag.
      
     </li>
   </ol>
+   <md-speed-dial md-event="click" md-direction="bottom">
+      <md-speed-dial-target class="md-primary">
+        <p style="color:white;font-size:30px;">&#8592;</p>
+      </md-speed-dial-target>
+
+    </md-speed-dial>
   </div>
 </template>
 
 <script>
   import firebase from 'firebase'
-  var keys=[],values=[],fires,fireVal,refUrl,newURl;
+  var keys=[],values=[],fires,fireVal,refUrl,newURl,mobileNo;
   export default {
   name: 'Fire',
   props: {
@@ -45,6 +52,7 @@ Your browser does not support the video tag.
       keys,
       values,
       fires,
+      mobileNo
     }
   },
   methods:{
@@ -58,6 +66,7 @@ Your browser does not support the video tag.
   },
   mounted(){
     var self=this;
+    const url = this.$store.state.url
     console.log(this.$store.state.type);
     refUrl=this.$store.state.url;
     console.log(refUrl);
@@ -65,6 +74,7 @@ Your browser does not support the video tag.
     fireRef.on('value',function(snap){
       self.fires=snap.val();
     });
+    self.mobileNo = url.substring(url.lastIndexOf('/')+1,url.length)
   }
 }
 </script>

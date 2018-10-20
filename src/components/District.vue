@@ -16,6 +16,12 @@
       </div>
     </li>
   </ol>
+   <md-speed-dial md-event="click" md-direction="bottom">
+      <md-speed-dial-target class="md-primary">
+        <p style="color:white;font-size:30px;">&#8592;</p>
+      </md-speed-dial-target>
+
+    </md-speed-dial>
   </div>
 </template>
 
