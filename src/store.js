@@ -15,8 +15,5 @@ export default new Vuex.Store({
     updateUrl(state,newUrl){
       state.url = newUrl
     }
-  },
-  actions: {
-
   }
 })

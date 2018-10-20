@@ -3,7 +3,16 @@
     <ol>
     <li v-for="key in keys">
       
-      <button @click="changeType(key)" >{{ key }}</button>
+        <div>
+      <md-card>
+      <md-card-header>
+        <div class="md-title"> {{key}}       </div>
+      </md-card-header>
+
+        <md-button @click="changeType(key)">Action</md-button>
+      
+    </md-card>
+      </div>
     </li>
   </ol>
   </div>
@@ -39,6 +48,8 @@
     var fireRef = firebase.database().ref(refUrl);
     fireRef.on('value',function(snap){
       fires=snap.val();
+      keys.length = 0;
+
       for(var i in fires){
         keys.push(i);
       }

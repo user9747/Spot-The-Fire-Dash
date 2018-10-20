@@ -2,11 +2,22 @@
   <div class="hello">
     <ol>
     <li>
+       <div>
+      <md-card>
+      <md-card-header>
+        <div class="md-title"> {{fires.state}}       </div>
+      </md-card-header>
+      <md-card-content>
+         <h3>{{ fires.lat }}</h3>
+      <h3>{{ fires.long }}</h3>
+      <h3>{{ fires.description }}</h3>
+      <h3>{{ fires.openDate }}</h3>
+      </md-card-content>
+        <md-button @click="changeType(key)">Back</md-button>
       
-      <h3  >{{ fires.lat }}</h3>
-      <h3  >{{ fires.long }}</h3>
-      <h3  >{{ fires.discription }}</h3>
-      <h3  >{{ fires.openDate }}</h3>
+    </md-card>
+      </div> 
+     
     </li>
   </ol>
   </div>
@@ -29,8 +40,11 @@
   },
   methods:{
     changeType:function(fireList){
-      console.log(this.$store.state.url);
-      console.log(this.$store.state.type);
+      const urlPrev = this.$store.state.url
+      var url = urlPrev.substring(0, urlPrev.lastIndexOf("/") + 1);
+      // console.log(url)
+      this.$store.commit('updateUrl',url)
+      this.$store.commit('changeType','FireList')
     }
   },
   mounted(){

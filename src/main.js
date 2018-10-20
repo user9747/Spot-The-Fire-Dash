@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import firebase from 'firebase'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
 
 var config = {
 	apiKey: "AIzaSyChg60s1BcbXk2aFNL6J86KrWt5IjYWhtU",
@@ -17,7 +20,7 @@ firebase.initializeApp(config);
 
 
 Vue.config.productionTip = false
-
+Vue.use(VueMaterial)
 new Vue({
   router,
   store,
