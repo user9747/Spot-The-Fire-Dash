@@ -1,5 +1,8 @@
 # spot-fire-dash
 
+##Snapshot
+![snapshot](dash.png)
+
 ## Project setup
 ```
 npm install
