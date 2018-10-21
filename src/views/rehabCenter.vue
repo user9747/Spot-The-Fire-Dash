@@ -6,7 +6,7 @@
     <form novalidate class="md-layout md-alignment-center" @submit.prevent="validateUser">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
-          <div class="md-title">Add Rehab</div>
+          <div class="md-title">Add Relief Camp</div>
         </md-card-header>
 
         <md-card-content>
@@ -54,7 +54,7 @@
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
         <md-card-actions>
-          <md-button type="submit" @click="submit()" class="md-primary" :disabled="sending">Create Rehab Center</md-button>
+          <md-button class="md-raised md-accent" type="submit" @click="submit()"  :disabled="sending">Create Relief Camp</md-button>
         </md-card-actions>
       </md-card>
 
@@ -131,6 +131,7 @@
           }
         }).then(function(res){
             console.log(res);
+            alert("Relief Camp Added")
             self.$router.push('/');
           }).catch((err)=>{
             console.log(err);
