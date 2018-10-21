@@ -18,6 +18,14 @@
               </md-field>
             </div>
           </div>
+          <div class="md-layout md-gutter">
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('address')">
+                <label for="address">address</label>
+                <md-input name="address" id="address"  v-model="form.address" :disabled="sending" />
+              </md-field>
+            </div>
+          </div>
 
           <div id="mapid" style="height: 180px;"></div>
 
@@ -76,7 +84,8 @@
         age: null,
         email: null,
         latitude:null,
-        longitude:null
+        longitude:null,
+        address:null
       },
       userSaved: false,
       sending: false,
@@ -96,7 +105,7 @@
           required,
           maxLength: minLength(3)
         },
-        gender: {
+        address: {
           required
         },
         email: {
@@ -111,13 +120,14 @@
         var self=this;
         axios({
           method:'post',
-          url:'http://localhost:3030/apis/rehab',
+          url:'http://localhost:3030/apis/rehab/addrehab',
           data:{
             description:this.form.description,
             lat:this.form.latitude,
             long:this.form.longitude,
             path:"dummy/Path",
-            stockData:"No stock data available"
+            stockData:"No stock data available",
+            address:this.form.address
           }
         }).then(function(res){
             console.log(res);
