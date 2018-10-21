@@ -1,6 +1,6 @@
 # spot-fire-dash
 
-##Snapshot
+## Snapshot
 ![snapshot](dash.png)
 
 ## Project setup
