@@ -1,10 +1,10 @@
 <template>
-  <div class="hello">
+  <div >
     <ol>
     <li v-for="key in keys">
      
         <p @click="changeType(key)">
-      <md-card>
+      <md-card class="md-layout-item md-alignment-center">
       <md-card-header>
         <div class="md-title"> {{key}}       </div>
       </md-card-header>

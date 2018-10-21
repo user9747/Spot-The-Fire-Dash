@@ -22,7 +22,7 @@
           </router-link>
         </md-list-item>
         <md-list-item>
-          <router-link to="/">
+          <router-link to="/rehab">
           <span class="md-list-item-text">Rehab</span>
           </router-link>
         </md-list-item>
