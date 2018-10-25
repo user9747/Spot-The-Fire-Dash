@@ -5,9 +5,9 @@
       
       <!-- <button  > -->
          <p @click="changeType(key)">
-      <md-card class="md-layout-item md-medium-size-100">
+      <md-card class="md-layout-item ">
       <md-card-header>
-        <div class="md-title"> {{key}}       </div>
+        <div class="md-title" style="padding:80px;padding-top:25px;padding-bottom:25px;font-size:30px;font-weight:900;"> {{key}}       </div>
       </md-card-header>
       
     </md-card>
