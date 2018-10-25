@@ -21,6 +21,9 @@ firebase.initializeApp(config);
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
+
+
+
 new Vue({
   router,
   store,
