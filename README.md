@@ -1,5 +1,8 @@
 # spot-fire-dash
 
+## Snapshot
+![snapshot](dash.png)
+
 ## Project setup
 ```
 npm install
@@ -24,3 +27,8 @@ npm run test
 ```
 npm run lint
 ```
+## Features
+
+<li>View all fire details</li>
+<li>Verify a fire is legitimate</li>
+<li>Add new relief camps</li>
